@@ -4,15 +4,16 @@ import matplotlib.pyplot as plt
 
 def experiment(num_of_pages, num_of_trials):
     # Run the C program with the parameters
-    result = subprocess.run(["./tlb", num_of_pages, num_of_trials], capture_output=True, text=True)
+    result = subprocess.run(["./tlb", str(num_of_pages), str(num_of_trials)], capture_output=True, text=True)
 
     # Convert the captured output to a long int
+    print("DEBUG: result.stdout:", result.stdout)
     result = int(result.stdout.strip())
 
-    return result/num_of_trials
+    return result
 
 def main():
-    num_of_trials = 1000
+    num_of_trials = 10
     num_of_pages = 2
     iterations = 10
 
